@@ -10,15 +10,17 @@ void Calendar::PrintYear(int year) {
 }
 
 void Calendar::PrintMonth(int year, int month) {
+  std::cout << "===========================================" << std::endl;
   ResetWeekDayIndex();
   CalcStartWeekDay(year, month);
   auto& v = IsLeapYear(year) ? leap_year_days : non_leap_year_days;
   PrintHeader(year, month);
   PrintDays(v[month-1]);
+  std::cout << "===========================================" << std::endl;
 }
 
 void Calendar::PrintHeader(int year, int month) {
-  std::cout << year << " Year " << month_str[month] << std::endl;
+  std::cout << "<" << year << "> [" << month_str[month] << "]" << std::endl;
   std::cout << "Mon Tue Wed Thu Fri Sat Sun" << std::endl;
 }
 
@@ -58,7 +60,6 @@ void Calendar::PrintDays(int days) {
     last_line += std::string(static_cast<int>(3 - date_str.size()), ' ') + date_str + " ";
   }
   std::cout << last_line << std::endl;
-  std::cout << "===========================================" << std::endl;
 }
 
 void Calendar::CalcStartWeekDay(int year, int month) {

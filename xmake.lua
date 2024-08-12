@@ -1,6 +1,8 @@
 add_rules("mode.debug", "mode.release")
+add_requires("glog", "gflags")
 
 target("calendar")
+    add_packages("gflags", "glog")
     set_kind("binary")
     add_files("src/*.cc")
     set_languages("c++17")
